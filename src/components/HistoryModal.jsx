@@ -65,19 +65,19 @@ function HistoryModal({ onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-[#D4F79E] rounded-lg w-full max-w-[600px] p-4 md:p-6 relative max-h-[85vh] overflow-auto shadow-xl">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 sm:p-4">
+      <div className="bg-[#D4F79E] rounded-lg w-[95%] sm:w-full max-w-[600px] p-3 sm:p-4 md:p-6 relative max-h-[90vh] overflow-auto shadow-xl">
         <button 
-          className="absolute top-2 right-4 text-gray-700 hover:text-gray-900 transition-colors"
+          className="absolute top-2 right-3 text-gray-700 hover:text-gray-900 transition-colors"
           onClick={onClose}
         >
-          <X size={24} />
+          <X size={20} className="sm:w-6 sm:h-6" />
         </button>
         
-        <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 border-b border-[#87D766] pb-2">Session History</h2>
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 md:mb-6 text-gray-800 border-b border-[#87D766] pb-2">Session History</h2>
         
         {/* Stats summary */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
           <div className="bg-[#96E078] p-4 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow">
             <p className="text-sm text-gray-700 font-medium">Total Sessions</p>
             <p className="text-2xl font-bold text-gray-800">{stats.totalSessions}</p>
@@ -94,7 +94,7 @@ function HistoryModal({ onClose }) {
         
         {/* Session list */}
         {history.length > 0 ? (
-          <div className="space-y-3 max-h-[40vh] overflow-y-auto pr-1 custom-scrollbar">
+          <div className="space-y-2 sm:space-y-3 max-h-[40vh] overflow-y-auto pr-1 custom-scrollbar">
             {history.slice().reverse().map((session, index) => (
               <div 
                 key={index} 
@@ -111,18 +111,18 @@ function HistoryModal({ onClose }) {
             ))}
           </div>
         ) : (
-          <div className="text-center text-gray-700 py-8 md:py-12 bg-white/30 rounded-lg border border-[#87D766] border-dashed">
-            <p className="text-lg">No sessions recorded yet.</p>
-            <p className="text-sm mt-2">Complete a pomodoro session to see it here!</p>
+          <div className="text-center text-gray-700 py-6 sm:py-8 md:py-12 bg-white/30 rounded-lg border border-[#87D766] border-dashed">
+            <p className="text-base sm:text-lg">No sessions recorded yet.</p>
+            <p className="text-xs sm:text-sm mt-2">Complete a pomodoro session to see it here!</p>
           </div>
         )}
         
         {/* Clear history button */}
         {history.length > 0 && (
-          <div className="mt-6 text-center">
+          <div className="mt-4 sm:mt-6 text-center">
             <button 
               onClick={clearHistory}
-              className="bg-[#87D766] hover:bg-[#96E078] text-gray-800 px-5 py-2 rounded-lg min-w-[110px] cursor-pointer transition-colors font-medium shadow-sm hover:shadow-md"
+              className="bg-[#87D766] hover:bg-[#96E078] text-gray-800 px-4 sm:px-5 py-2 rounded-lg min-w-[100px] sm:min-w-[110px] cursor-pointer transition-colors font-medium shadow-sm hover:shadow-md text-sm sm:text-base"
             >
               Clear History
             </button>
