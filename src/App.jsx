@@ -1,5 +1,5 @@
 import './App.css'
-import Panda from './components/panda'
+import Panda from './components/Panda'
 import Timer from './components/Timer'
 import TaskInput from './components/TaskInput'
 
