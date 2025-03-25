@@ -189,7 +189,7 @@ function Timer() {
 
   return (
     // Main container with light green background
-    <div className="w-[500px] h-[220px] rounded-2xl bg-[#D4F79E] p-4 flex flex-col items-center justify-evenly relative">
+    <div className="w-full max-w-[500px] h-auto min-h-[220px] rounded-2xl bg-[#D4F79E] p-4 flex flex-col items-center justify-evenly relative">
       {/* History icon in the top left */}
       <div className="absolute top-4 left-4">
         <History 
@@ -212,7 +212,7 @@ function Timer() {
       </div>
 
       {/* Timer display */}
-      <div className="text-8xl font-extralight mt-2">
+      <div className="text-5xl md:text-8xl font-extralight mt-2 py-4">
         {formatTime(timeLeft)}
       </div>
 

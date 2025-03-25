@@ -19,8 +19,8 @@ function SettingsModal({ settings, onSave, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 backdrop-blur-sm">
-      <div className="bg-gradient-to-br from-[#D4F79E] to-[#C9F280] rounded-xl w-[700px] max-w-[95%] p-8 relative shadow-2xl max-h-[90vh] overflow-auto border border-[#87D766]/50">
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 backdrop-blur-sm p-4">
+      <div className="bg-gradient-to-br from-[#D4F79E] to-[#C9F280] rounded-xl w-full max-w-[700px] p-4 md:p-8 relative shadow-2xl max-h-[90vh] overflow-auto border border-[#87D766]/50">
         <button 
           className="absolute top-2 right-4 text-gray-700 hover:text-gray-900 transition-colors bg-white/50 p-2 rounded-full hover:bg-white/80 cursor-pointer"
           onClick={onClose}
@@ -29,54 +29,54 @@ function SettingsModal({ settings, onSave, onClose }) {
           <X size={20} />
         </button>
         
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+        <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 flex items-center gap-2">
           <SettingsIcon size={24} className="text-[#5A9E32]" />
           <span>Settings</span>
         </h2>
         
         {/* Tabs */}
-        <div className="flex mb-6 bg-white/30 p-1 rounded-lg border border-[#87D766]/50 shadow-inner">
+        <div className="flex mb-4 md:mb-6 bg-white/30 p-1 rounded-lg border border-[#87D766]/50 shadow-inner">
           <button
             type="button"
-            className={`flex-1 py-2 px-4 rounded-md flex items-center justify-center gap-2 transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-2 md:px-4 rounded-md flex items-center justify-center gap-1 md:gap-2 transition-all cursor-pointer text-sm md:text-base ${
               activeTab === 'timer' 
                 ? 'bg-[#87D766] text-gray-800 font-medium shadow-sm' 
                 : 'text-gray-600 hover:bg-white/50'
             }`}
             onClick={() => setActiveTab('timer')}
           >
-            <Clock size={18} />
+            <Clock size={16} />
             <span>Timer</span>
           </button>
           <button
             type="button"
-            className={`flex-1 py-2 px-4 rounded-md flex items-center justify-center gap-2 transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-2 md:px-4 rounded-md flex items-center justify-center gap-1 md:gap-2 transition-all cursor-pointer text-sm md:text-base ${
               activeTab === 'preferences' 
                 ? 'bg-[#87D766] text-gray-800 font-medium shadow-sm' 
                 : 'text-gray-600 hover:bg-white/50'
             }`}
             onClick={() => setActiveTab('preferences')}
           >
-            <Coffee size={18} />
+            <Coffee size={16} />
             <span>Preferences</span>
           </button>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
           {/* Timer Settings Tab */}
           {activeTab === 'timer' && (
-            <div className="space-y-6 animate-fadeIn">
-              <div className="bg-yellow-100/70 p-4 rounded-lg border border-yellow-200 flex items-start gap-3">
+            <div className="space-y-4 md:space-y-6 animate-fadeIn">
+              <div className="bg-yellow-100/70 p-3 md:p-4 rounded-lg border border-yellow-200 flex items-start gap-3">
                 <div className="text-yellow-600 mt-0.5">⚠️</div>
-                <p className="text-sm text-gray-700">
+                <p className="text-xs md:text-sm text-gray-700">
                   Changing these settings will reset any timer currently in progress.
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 {/* Work time setting */}
-                <div className="bg-white/80 p-5 rounded-lg border border-[#87D766] shadow-sm hover:shadow-md transition-shadow">
-                  <label className="block mb-3 text-gray-800 font-medium flex items-center gap-2">
+                <div className="bg-white/80 p-4 md:p-5 rounded-lg border border-[#87D766] shadow-sm hover:shadow-md transition-shadow">
+                  <label className="block mb-2 md:mb-3 text-gray-800 font-medium flex items-center gap-2">
                     <Clock size={16} className="text-[#5A9E32]" />
                     Work Time
                   </label>
@@ -86,7 +86,7 @@ function SettingsModal({ settings, onSave, onClose }) {
                       name="workTime"
                       value={localSettings.workTime}
                       onChange={handleChange}
-                      className="w-full p-3 border border-[#87D766] rounded-lg bg-white focus:ring-2 focus:ring-[#87D766] focus:outline-none text-center text-lg font-semibold"
+                      className="w-full p-2 md:p-3 border border-[#87D766] rounded-lg bg-white focus:ring-2 focus:ring-[#87D766] focus:outline-none text-center text-base md:text-lg font-semibold"
                       min="1"
                       max="60"
                     />
@@ -95,8 +95,8 @@ function SettingsModal({ settings, onSave, onClose }) {
                 </div>
                 
                 {/* Break time setting */}
-                <div className="bg-white/80 p-5 rounded-lg border border-[#87D766] shadow-sm hover:shadow-md transition-shadow">
-                  <label className="block mb-3 text-gray-800 font-medium flex items-center gap-2">
+                <div className="bg-white/80 p-4 md:p-5 rounded-lg border border-[#87D766] shadow-sm hover:shadow-md transition-shadow">
+                  <label className="block mb-2 md:mb-3 text-gray-800 font-medium flex items-center gap-2">
                     <Coffee size={16} className="text-[#5A9E32]" />
                     Break Time
                   </label>
@@ -106,7 +106,7 @@ function SettingsModal({ settings, onSave, onClose }) {
                       name="breakTime"
                       value={localSettings.breakTime}
                       onChange={handleChange}
-                      className="w-full p-3 border border-[#87D766] rounded-lg bg-white focus:ring-2 focus:ring-[#87D766] focus:outline-none text-center text-lg font-semibold"
+                      className="w-full p-2 md:p-3 border border-[#87D766] rounded-lg bg-white focus:ring-2 focus:ring-[#87D766] focus:outline-none text-center text-base md:text-lg font-semibold"
                       min="1"
                       max="30"
                     />
@@ -115,8 +115,8 @@ function SettingsModal({ settings, onSave, onClose }) {
                 </div>
                 
                 {/* Long break time setting */}
-                <div className="bg-white/80 p-5 rounded-lg border border-[#87D766] shadow-sm hover:shadow-md transition-shadow">
-                  <label className="block mb-3 text-gray-800 font-medium flex items-center gap-2">
+                <div className="bg-white/80 p-4 md:p-5 rounded-lg border border-[#87D766] shadow-sm hover:shadow-md transition-shadow">
+                  <label className="block mb-2 md:mb-3 text-gray-800 font-medium flex items-center gap-2">
                     <Coffee size={16} className="text-[#5A9E32]" />
                     Long Break
                   </label>
@@ -126,7 +126,7 @@ function SettingsModal({ settings, onSave, onClose }) {
                       name="longBreakTime"
                       value={localSettings.longBreakTime}
                       onChange={handleChange}
-                      className="w-full p-3 border border-[#87D766] rounded-lg bg-white focus:ring-2 focus:ring-[#87D766] focus:outline-none text-center text-lg font-semibold"
+                      className="w-full p-2 md:p-3 border border-[#87D766] rounded-lg bg-white focus:ring-2 focus:ring-[#87D766] focus:outline-none text-center text-base md:text-lg font-semibold"
                       min="1"
                       max="60"
                     />
@@ -140,14 +140,14 @@ function SettingsModal({ settings, onSave, onClose }) {
           {/* Preferences Tab */}
           {activeTab === 'preferences' && (
             <div className="space-y-4 animate-fadeIn">
-              <div className="bg-white/80 p-5 rounded-lg border border-[#87D766] shadow-sm">
-                <h3 className="font-medium text-gray-800 mb-4">Notification Settings</h3>
+              <div className="bg-white/80 p-4 md:p-5 rounded-lg border border-[#87D766] shadow-sm">
+                <h3 className="font-medium text-gray-800 mb-3 md:mb-4">Notification Settings</h3>
                 
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-[#E8FBCF] rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <Bell size={18} className="text-[#5A9E32]" />
-                      <span className="text-gray-800">Timer Notifications</span>
+                  <div className="flex items-center justify-between p-2 md:p-3 bg-[#E8FBCF] rounded-lg">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <Bell size={16} className="text-[#5A9E32]" />
+                      <span className="text-sm md:text-base text-gray-800">Timer Notifications</span>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input 
@@ -160,14 +160,14 @@ function SettingsModal({ settings, onSave, onClose }) {
                           allowNotifications: e.target.checked
                         })}
                       />
-                      <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#87D766]"></div>
+                      <div className="w-9 md:w-11 h-5 md:h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 md:after:h-5 after:w-4 md:after:w-5 after:transition-all peer-checked:bg-[#87D766]"></div>
                     </label>
                   </div>
                   
-                  <div className="flex items-center justify-between p-3 bg-[#E8FBCF] rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <SettingsIcon size={18} className="text-[#5A9E32]" />
-                      <span className="text-gray-800">Hide Title</span>
+                  <div className="flex items-center justify-between p-2 md:p-3 bg-[#E8FBCF] rounded-lg">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <SettingsIcon size={16} className="text-[#5A9E32]" />
+                      <span className="text-sm md:text-base text-gray-800">Hide Title</span>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input 
@@ -180,7 +180,7 @@ function SettingsModal({ settings, onSave, onClose }) {
                           hideTitle: e.target.checked
                         })}
                       />
-                      <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#87D766]"></div>
+                      <div className="w-9 md:w-11 h-5 md:h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 md:after:h-5 after:w-4 md:after:w-5 after:transition-all peer-checked:bg-[#87D766]"></div>
                     </label>
                   </div>
                 </div>
@@ -191,9 +191,9 @@ function SettingsModal({ settings, onSave, onClose }) {
           {/* Save button */}
           <button 
             type="submit"
-            className="w-full py-4 bg-[#87D766] rounded-lg hover:bg-[#96E078] transition-all text-gray-800 font-semibold text-lg shadow-md hover:shadow-lg mt-8 flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full py-3 md:py-4 bg-[#87D766] rounded-lg hover:bg-[#96E078] transition-all text-gray-800 font-semibold text-base md:text-lg shadow-md hover:shadow-lg mt-6 md:mt-8 flex items-center justify-center gap-2 cursor-pointer"
           >
-            <SettingsIcon size={20} />
+            <SettingsIcon size={18} />
             Save Settings
           </button>
         </form>

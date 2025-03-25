@@ -65,8 +65,8 @@ function HistoryModal({ onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-[#D4F79E] rounded-lg w-[600px] max-w-[95%] p-6 relative max-h-[85vh] overflow-auto shadow-xl">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-[#D4F79E] rounded-lg w-full max-w-[600px] p-4 md:p-6 relative max-h-[85vh] overflow-auto shadow-xl">
         <button 
           className="absolute top-2 right-4 text-gray-700 hover:text-gray-900 transition-colors"
           onClick={onClose}
@@ -74,10 +74,10 @@ function HistoryModal({ onClose }) {
           <X size={24} />
         </button>
         
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b border-[#87D766] pb-2">Session History</h2>
+        <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 border-b border-[#87D766] pb-2">Session History</h2>
         
         {/* Stats summary */}
-        <div className="grid grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           <div className="bg-[#96E078] p-4 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow">
             <p className="text-sm text-gray-700 font-medium">Total Sessions</p>
             <p className="text-2xl font-bold text-gray-800">{stats.totalSessions}</p>
@@ -98,20 +98,20 @@ function HistoryModal({ onClose }) {
             {history.slice().reverse().map((session, index) => (
               <div 
                 key={index} 
-                className="border border-[#87D766] rounded-lg p-4 flex justify-between items-center bg-white/60 hover:bg-white/80 transition-colors shadow-sm hover:shadow-md"
+                className="border border-[#87D766] rounded-lg p-3 md:p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white/60 hover:bg-white/80 transition-colors shadow-sm hover:shadow-md"
               >
-                <div>
-                  <p className="font-semibold text-gray-800 text-lg">{session.task || "Unnamed Session"}</p>
-                  <p className="text-sm text-gray-600">{formatDate(session.date)}</p>
+                <div className="mb-2 sm:mb-0">
+                  <p className="font-semibold text-gray-800 text-base md:text-lg">{session.task || "Unnamed Session"}</p>
+                  <p className="text-xs md:text-sm text-gray-600">{formatDate(session.date)}</p>
                 </div>
-                <div className="bg-[#87D766] px-6 py-2 rounded-full text-sm font-medium text-gray-800 shadow-sm min-w-[50px] text-center">
+                <div className="bg-[#87D766] px-4 md:px-6 py-1 md:py-2 rounded-full text-sm font-medium text-gray-800 shadow-sm min-w-[50px] text-center">
                   {session.duration} min
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="text-center text-gray-700 py-12 bg-white/30 rounded-lg border border-[#87D766] border-dashed">
+          <div className="text-center text-gray-700 py-8 md:py-12 bg-white/30 rounded-lg border border-[#87D766] border-dashed">
             <p className="text-lg">No sessions recorded yet.</p>
             <p className="text-sm mt-2">Complete a pomodoro session to see it here!</p>
           </div>
