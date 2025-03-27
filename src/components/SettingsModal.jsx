@@ -196,6 +196,13 @@ function SettingsModal({ settings, onSave, onClose }) {
             <SettingsIcon size={16} className="sm:w-5 sm:h-5" />
             Save Settings
           </button>
+          
+          {/* Created by section */}
+          <div className="text-center mt-4 sm:mt-6 pt-2 sm:pt-3 border-t border-[#87D766]/30">
+            <p className="text-xs sm:text-sm text-gray-600">
+              Created with 🐼 by <a href="https://www.linkedin.com/in/tanishqchahal" className="font-medium text-gray-700 underline" target="_blank" rel="noopener noreferrer">Tanishq Chahal</a>
+            </p>
+          </div>
         </form>
       </div>
     </div>
